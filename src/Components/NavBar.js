@@ -16,9 +16,14 @@ export class NavBar extends Component {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/newsdetails#">Home</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/newsdetails">Link</a>
-        </li>
+        <li className="nav-item"><a className="nav-link" href="/newsdetails">Link</a></li>
+         <li className="nav-item"><a className="nav-link" href="/newsdetails">business     </a></li>
+         <li className="nav-item"><a className="nav-link" href="/newsdetails">entertainment</a></li>
+         <li className="nav-item"><a className="nav-link" href="/newsdetails">general</a></li>
+         <li className="nav-item"><a className="nav-link" href="/newsdetails">health</a></li>
+         <li className="nav-item"><a className="nav-link" href="/newsdetails">science</a></li>
+         <li className="nav-item"><a className="nav-link" href="/newsdetails">sports</a></li>
+         <li className="nav-item"><a className="nav-link" href="/newsdetails">technology</a></li>
       </ul>
     </div>
   </div>
