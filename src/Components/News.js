@@ -62,6 +62,8 @@ export default class News extends Component {
 
   handlePrevClick = async()=>{
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=07abc97fe06a411bba409f74b9240dc5&page=${this.state.page-1}&pageSize=${this.props.pageSize}`
+    // https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=07abc97fe06a411bba409f74b9240dc5&page=1&pageSize=6
+    console.log(url)
     this.setState({loading:true})
     let data = await fetch(url);
     let parsedData=await data.json();
