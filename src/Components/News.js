@@ -19,14 +19,15 @@ export default class News extends Component {
 
   }
 
-  constructor(){
+  constructor(props){
     console.log("construstor");
-    super();
+    super(props);
     this.state={
       articles: [ ],
       loading:false,
       page : 1
     }
+    document.title=`${this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)}- NewsMonkey`
   }
 
   async updateNews(){
@@ -64,7 +65,7 @@ export default class News extends Component {
     return (
       
       <div className='container my-3'>
-        <h2 className='text-center' style={{margin: '35px 0px' }}>NewMonkey - Top headlines</h2>
+        <h2 className='text-center' style={{margin: '35px 0px' }}>NewMonkey - Top <span style={{color:"#910e04"}}>{this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)}</span>  Headlines</h2>
         {this.state.loading && <Spinner/> }
         <div className='row my-3'>
          {!this.state.loading && this.state.articles.map((element)=>{
