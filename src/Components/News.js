@@ -4,9 +4,7 @@ import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-// document.title = `${
-//       props.category.charAt(0).toUpperCase() + props.category.slice(1)
-//     }- NewsMonkey`;
+
 
 
  const News = (props)=> {
@@ -34,16 +32,23 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
   useEffect(()=>{
     updateNews();
+    document.title = `${
+      props.category.charAt(0).toUpperCase() + props.category.slice(1)
+    }- NewsMonkey`;
+    //eslint-disable-next-line
   },[])
 
   const fetchMoreData = async () => {
+    
+    let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
     setPage(page + 1)
-    let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
     setArticles(articles.concat(parsedData.articles))
     setTotalResults(parsedData.totalResults)
+    console.log("articles.length "+articles.length )
+    console.log("totalResults"+totalResults)
   };
 
 
@@ -63,6 +68,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
           dataLength={articles.length}
           next={fetchMoreData}
           hasMore={articles.length !== totalResults}
+          
           loader={<Spinner />}
         >
           <div className="container">
